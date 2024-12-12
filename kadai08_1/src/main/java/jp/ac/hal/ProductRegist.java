@@ -47,6 +47,8 @@ public class ProductRegist extends HttpServlet {
 		String name = request.getParameter("name");
 		String price  = request.getParameter("price");
 		String[] cb_string = request.getParameterValues("cb");
+		
+		Product product = new Product(id, name, price);
 	
 		//複数値取得
 		
@@ -65,18 +67,16 @@ public class ProductRegist extends HttpServlet {
 		if(id == null || id.length() == 0) {
 			err.add("IDは必須入力です");
 		}
-		if(name == null || id.length() == 0) {
+		if(name == null || name.length() == 0) {
 			err.add("Nameは必須入力です");
 		}
-		if(price == null || id.length() == 0) {
+		if(price == null || price.length() == 0) {
 			err.add("Priceは必須入力です");
 		}
 		
-		request.setAttribute("price", price);
-		request.setAttribute("name", name);
-		request.setAttribute("id", id);
 		request.setAttribute("cb", cb);
 		request.setAttribute("err", err);
+		request.setAttribute("product", product);
 		//転送用のオブジェクトを取得
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jsp/confirm.jsp");
 				
