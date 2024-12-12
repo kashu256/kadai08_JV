@@ -1,0 +1,65 @@
+package jp.ac.hal;
+
+public class Product {
+    private String id;
+    private String name;
+    private String price;
+    private boolean typeX;
+    private boolean typeY;
+    private boolean typeZ;
+
+    // IDのGetterとSetter
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    // NameのGetterとSetter
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // PriceのGetterとSetter
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    // Type XのGetterとSetter
+    public boolean isTypeX() {
+        return typeX;
+    }
+
+    public void setTypeX(boolean typeX) {
+        this.typeX = typeX;
+    }
+
+    // Type YのGetterとSetter
+    public boolean isTypeY() {
+        return typeY;
+    }
+
+    public void setTypeY(boolean typeY) {
+        this.typeY = typeY;
+    }
+
+    // Type ZのGetterとSetter
+    public boolean isTypeZ() {
+        return typeZ;
+    }
+
+    public void setTypeZ(boolean typeZ) {
+        this.typeZ = typeZ;
+    }
+
+}

@@ -1,0 +1,49 @@
+package jp.ac.hal;
+
+import java.io.IOException;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/ProductRegist")
+public class ProductRegist extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String price = request.getParameter("price");
+        String[] types = request.getParameterValues("type");
+
+        // 入力データをProductオブジェクトに設定
+        Product product = new Product();
+        product.setId(id);
+        product.setName(name);
+
+        try {
+            Double.parseDouble(price); // 数値チェック
+            product.setPrice(price);
+        } catch (NumberFormatException e) {
+            request.setAttribute("error", "価格は数値で入力してください");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
+            dispatcher.forward(request, response);
+            return;
+        }
+
+        if (types != null) {
+            for (String type : types) {
+                if (type.equals("x")) product.setTypeX(true);
+                if (type.equals("y")) product.setTypeY(true);
+                if (type.equals("z")) product.setTypeZ(true);
+            }
+        }
+
+        // リクエストにデータを設定してJSPにフォワード
+        request.setAttribute("product", product);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("confirm.jsp");
+        dispatcher.forward(request, response);
+    }
+}

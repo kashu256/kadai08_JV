@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>確認画面</title>
+</head>
+<body>
+    <h1>確認画面</h1>
+
+    <% 
+        Product product = (Product) request.getAttribute("product");
+        if (product == null) {
+            out.println("<p style='color: red;'>データがありません</p>");
+        } else {
+    %>
+        <p>ID: <%= product.getId() %></p>
+        <p>Name: <%= product.getName() %></p>
+        <p>Price: <%= product.getPrice() %></p>
+        <p>Type X: <%= product.isTypeX() ? "有り" : "無し" %></p>
+        <p>Type Y: <%= product.isTypeY() ? "有り" : "無し" %></p>
+        <p>Type Z: <%= product.isTypeZ() ? "有り" : "無し" %></p>
+    <% 
+        }
+    %>
+
+    <a href="index.html">戻る</a>
+</body>
+</html>

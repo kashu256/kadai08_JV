@@ -1,0 +1,3 @@
+INDEX VERSION 1.134
+C:\JV\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4154592191.index
+\kadai08_1\src\main\java

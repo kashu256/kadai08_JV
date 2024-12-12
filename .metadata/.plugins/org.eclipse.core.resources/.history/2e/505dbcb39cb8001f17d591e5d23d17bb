@@ -1,0 +1,96 @@
+package jp.ac.hal;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ProductRegist
+ */
+@WebServlet("/ProductRegist")
+public class ProductRegist extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ProductRegist() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
+		
+		
+		
+		//単一値（スカラー値）取得
+		String id = request.getParameter("id");		
+		String name = request.getParameter("name");
+		String price  = request.getParameter("price");
+		String[] cb_string = request.getParameterValues("cb");
+	
+		//複数値取得
+		
+		List<String> cb = new ArrayList<>(); 
+		cb.add("");
+		if (cb_string != null ) {
+			for(String cbs : cb_string) {
+				cb.add(cbs);
+			}
+			
+		}
+		
+		List<String> err = new ArrayList<>();
+		
+		
+		if(id == null || id.length() == 0) {
+			err.add("ID is required.");
+		}
+		String cb_str = "";
+		if(cb == null) {
+			err += "Checkbox is required.";
+		}else {
+			for(String c : cb) {
+				cb_str += c;
+			}
+			response.getWriter().append(id + cb_str);
+		
+		
+		}
+		response.getWriter().append(id + cb_str + err);
+	}
+		
+		
+		
+		
+		request.setAttribute("price", price);
+		request.setAttribute("name", name);
+		request.setAttribute("id", id);
+		request.setAttribute("cb", cb);
+		//転送用のオブジェクトを取得
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jsp/confirm.jsp");
+				
+		//フォアード
+		rd.forward(request, response);
+	}
+
+}

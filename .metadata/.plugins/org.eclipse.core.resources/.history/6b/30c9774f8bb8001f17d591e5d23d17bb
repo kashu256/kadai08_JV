@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import = "java.util.List" %>
+<%@ page import = "jp.ac.hal.User" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>確認画面</h1>
+<%
+//データの引っこ抜き
+String id = request.getAttribute("id").toString();
+String name = request.getAttribute("name").toString();
+String price = request.getAttribute("price").toString();
+//int price = (int)request.getAttribute("price");
+//List<String> images = (List<String>)request.getAttribute("images");
+//User user = (User)request.getAttribute("user");
+%>
+<label>ID:<%= id %></label>
+<label>Name:<%= name %></label>
+<label>Price:<%= price %></label>
+
+
+
+</body>
+</html>
