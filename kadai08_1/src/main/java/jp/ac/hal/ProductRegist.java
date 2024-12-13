@@ -37,29 +37,41 @@ public class ProductRegist extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
-		
-		
-		
-		//単一値（スカラー値）取得
 		String id = request.getParameter("id");		
 		String name = request.getParameter("name");
 		String price  = request.getParameter("price");
 		String[] cb_string = request.getParameterValues("cb");
+		int flags = 0;
 		
-		Product product = new Product(id, name, price);
-	
-		//複数値取得
-		
-		List<String> cb = new ArrayList<>(); 
-		cb.add("");
-		if (cb_string != null ) {
-			for(String cbs : cb_string) {
-				cb.add(cbs);
+		for(String flag : cb_string) {
+			switch(flag) {
+			case "x":
+				flags |= 1;
+				break;
+			case "y":
+				flags |= 2;
+				break;
+			case "z":
+				flags |= 4;
+				break;
 			}
 			
 		}
+		
+	
+		//複数値取得
+		
+//		List<String> cb = new ArrayList<>(); 
+//		cb.add("");
+//		if (cb_string != null ) {
+//			for(String cbs : cb_string) {
+//				cb.add(cbs);
+//			}
+//			
+//		}
+		
+		
+		
 		
 		List<String> err = new ArrayList<>();
 		err.add("");
@@ -71,10 +83,17 @@ public class ProductRegist extends HttpServlet {
 			err.add("Nameは必須入力です");
 		}
 		if(price == null || price.length() == 0) {
-			err.add("Priceは必須入力です");
+			err.add("Priceは必須入力です"); 
 		}
+		try {
+			Integer.parseInt(price);
+			
+		}catch(Exception e){
+			err.add("Priceは数値で入力してください");
+		}
+		Product product = new Product(id, name, price, flags);
 		
-		request.setAttribute("cb", cb);
+		//request.setAttribute("cb", cb);
 		request.setAttribute("err", err);
 		request.setAttribute("product", product);
 		//転送用のオブジェクトを取得

@@ -1,0 +1,52 @@
+package jp.ac.hal;
+
+import java.io.Serializable;
+
+public class Product implements Serializable{
+	private String id;
+	private String name;
+	private String price;
+	public int getFlags() {
+		return flags;
+	}
+	public void setFlags(int flags) {
+		this.flags = flags;
+	}
+	private int flags;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public boolean isTypex(){
+		return (flags & 1) != 0;
+	}
+	public boolean isTypey(){
+		return (flags & 2) != 0;
+	}
+	public boolean isTypez(){
+		return (flags & 4) != 0;
+	}
+	public Product() {}
+	public Product(String id, String name, String price, int flags) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.flags = flags;
+	}
+	
+
+}
