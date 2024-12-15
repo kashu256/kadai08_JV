@@ -42,7 +42,7 @@ public class ProductRegist extends HttpServlet {
 		String price  = request.getParameter("price");
 		String[] cb_string = request.getParameterValues("cb");
 		int flags = 0;
-		if(cb_string != null) {
+		
 		for(String flag : cb_string) {
 			switch(flag) {
 			case "x":
@@ -55,9 +55,9 @@ public class ProductRegist extends HttpServlet {
 				flags |= 4;
 				break;
 			}
+			
 		}
-		}
-	
+		
 	
 		//複数値取得
 		
