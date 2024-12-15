@@ -19,9 +19,6 @@ Product product = (Product)request.getAttribute("product");
 //List<String> cb = (List<String>)request.getAttribute("cb");
 List<String> err = (List<String>)request.getAttribute("err");
 %>
-<!--<label>ID:<%=// id %></label><br>-->
-<!--<label>Name:<%=// name %></label><br>-->
-<!--<label>Price:<%=// price %></label><br>-->
 <label>ID:<%= product.getId() %></label><br>
 <label>Name:<%= product.getName() %></label><br>
 <label>Price:<%= product.getPrice() %></label><br>

@@ -59,6 +59,7 @@ public class ProductRegist extends HttpServlet {
 		}
 	
 	
+		//複数値取得
 		
 //		List<String> cb = new ArrayList<>(); 
 //		cb.add("");
@@ -92,9 +93,6 @@ public class ProductRegist extends HttpServlet {
 		}
 		Product product = new Product(id, name, price, flags);
 		
-		//request.setAttribute("price", price);
-		//request.setAttribute("name", name);
-		//request.setAttribute("id", id);
 		//request.setAttribute("cb", cb);
 		request.setAttribute("err", err);
 		request.setAttribute("product", product);

@@ -95,6 +95,7 @@ public class ProductRegist extends HttpServlet {
 		//request.setAttribute("price", price);
 		//request.setAttribute("name", name);
 		//request.setAttribute("id", id);
+
 		//request.setAttribute("cb", cb);
 		request.setAttribute("err", err);
 		request.setAttribute("product", product);
