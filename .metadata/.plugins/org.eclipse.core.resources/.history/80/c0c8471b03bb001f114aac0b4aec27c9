@@ -60,14 +60,14 @@ public class ProductRegist extends HttpServlet {
 	
 	
 		
-		List<String> cb = new ArrayList<>(); 
-		cb.add("");
-		if (cb_string != null ) {
-			for(String cbs : cb_string) {
-				cb.add(cbs);
-			}
-			
-		}
+//		List<String> cb = new ArrayList<>(); 
+//		cb.add("");
+//		if (cb_string != null ) {
+//			for(String cbs : cb_string) {
+//				cb.add(cbs);
+//			}
+//			
+//		}
 		
 		
 		
@@ -92,10 +92,10 @@ public class ProductRegist extends HttpServlet {
 		}
 		Product product = new Product(id, name, price, flags);
 		
-		request.setAttribute("price", price);
-		request.setAttribute("name", name);
-		request.setAttribute("id", id);
-		request.setAttribute("cb", cb);
+		//request.setAttribute("price", price);
+		//request.setAttribute("name", name);
+		//request.setAttribute("id", id);
+		//request.setAttribute("cb", cb);
 		request.setAttribute("err", err);
 		request.setAttribute("product", product);
 		//転送用のオブジェクトを取得

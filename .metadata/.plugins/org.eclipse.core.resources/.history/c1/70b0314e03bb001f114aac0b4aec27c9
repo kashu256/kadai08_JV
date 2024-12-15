@@ -22,9 +22,6 @@ List<String> err = (List<String>)request.getAttribute("err");
 <label>ID:<%= id %></label><br>
 <label>Name:<%= name %></label><br>
 <label>Price:<%= price %></label><br>
-<label>Type:<% for(String checkbox : cb){%>
-	<%= checkbox%>
-<%} %></label><br>
 
 
 <label>ID:<%= product.getId() %></label><br>
